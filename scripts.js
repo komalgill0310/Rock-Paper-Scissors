@@ -9,6 +9,7 @@ document.getElementById('rock').addEventListener('click', (e) => {
   img.src = image[0];
   document.body.appendChild(img);
   setTimeout(getRandomImage(),1000);
+  winGame();
 });
 
 document.getElementById('paper').addEventListener('click', (e) => {
@@ -17,6 +18,7 @@ document.getElementById('paper').addEventListener('click', (e) => {
   img.src = image[1];
   document.body.appendChild(img);
   setTimeout(getRandomImage(),1000);
+  winGame();
 });
 
 document.getElementById('scissor').addEventListener('click', (e) => {
@@ -25,6 +27,7 @@ document.getElementById('scissor').addEventListener('click', (e) => {
   img.src = image[2];
   document.body.appendChild(img);
   setTimeout(getRandomImage(),1000);
+  winGame();
 });
 
 function getRandomImage() {
@@ -34,9 +37,37 @@ function getRandomImage() {
   console.log("random Function worked");
 }
 
+//pseudocode for check if user has won, draw or lost
 
+//win rule: image[0]==image[2]; image[2]==image[1]; image[1]==imge[0]
+//draw rule: if both of the images are equal
+//lost: if none of the condition checks out
 
+//find out: how to check if two array are equal or if the one array matches to the required array
 
+function winGame(){
+  if(img.src===image[0] && randImg.src===image[2]){
+   console.log("Win");
+  }
+  else if(img.src===image[2] && randImg.src===image[1]){
+    console.log("Win");
+  }
+  else if(img.src===image[1] && randImg.src===image[0]){
+    console.log("Win");
+  }
+  else if(img.src===image[0] && randImg.src===image[0]){
+    console.log("Draw");
+  }
+  else if(img.src===image[1] && randImg.src===image[1]){
+    console.log("Draw");
+  }
+  else if(img.src===image[2] && randImg.src===image[2]){
+    console.log("Draw");
+  }
+  else{
+    console.log("Sadly, you have lost!");
+  }
+}
 
 
 
