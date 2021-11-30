@@ -47,25 +47,25 @@ function getRandomImage() {
 
 function winGame(){
   if(img.src===image[0] && randImg.src===image[2]){
-   console.log("Win");
+   document.getElementById('text').innerHTML = "Win";
   }
   else if(img.src===image[2] && randImg.src===image[1]){
-    console.log("Win");
+    document.getElementById('text').innerHTML = "Win";
   }
   else if(img.src===image[1] && randImg.src===image[0]){
-    console.log("Win");
+    document.getElementById('text').innerHTML = "Win";
   }
   else if(img.src===image[0] && randImg.src===image[0]){
-    console.log("Draw");
+    document.getElementById('text').innerHTML = "Draw";
   }
-  else if(img.src===image[1] && randImg.src===image[1]){
-    console.log("Draw");
+  else if(mg.src===image[1] && randImg.src===image[1]){
+    document.getElementById('text').innerHTML = "Draw";
   }
-  else if(img.src===image[2] && randImg.src===image[2]){
-    console.log("Draw");
+  else if(mg.src===image[2] && randImg.src===image[2]){
+    document.getElementById('text').innerHTML = "Draw";
   }
   else{
-    console.log("Sadly, you have lost!");
+   document.getElementById('text').innerHTML = "Sadly, you have lost!";
   }
 }
 
