@@ -5,128 +5,45 @@ let image = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbCbt-tpSLG
 
 document.getElementById('rock').addEventListener('click', (e) => {
   e.preventDefault();
-  console.log('Rock');
+  // console.log('Rock');
   img.src = image[0];
   document.body.appendChild(img);
   setTimeout(getRandomImage(), 1000);
-  winGame();
+  updateScoreBoard();
 });
 
 document.getElementById('paper').addEventListener('click', (e) => {
   e.preventDefault();
-  console.log('Paper');
+  // console.log('Paper');
   img.src = image[1];
   document.body.appendChild(img);
   setTimeout(getRandomImage(), 1000);
-  winGame();
+  updateScoreBoard();
 });
 
 document.getElementById('scissor').addEventListener('click', (e) => {
   e.preventDefault();
-  console.log('Scissor');
+  // console.log('Scissor');
   img.src = image[2];
   document.body.appendChild(img);
   setTimeout(getRandomImage(), 1000);
-  winGame();
+  updateScoreBoard();
 });
+
+// document.getElementById('endGame').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   let footRow = createTRow();
+//   footRow.textContent = "Total";
+//   console.log("End Game");
+//   addFooterCell();
+//   totalScore();
+// });
 
 function getRandomImage() {
   let randomImageIndex = Math.floor(Math.random() * image.length);
   randImg.src = image[randomImageIndex];
   document.body.appendChild(randImg);
-  console.log("random Function worked");
 }
-
-//pseudocode for check if user has won, draw or lost
-
-//win rule: image[0]==image[2]; image[2]==image[1]; image[1]==imge[0]
-//draw rule: if both of the images are equal
-//lost: if none of the condition checks out
-
-//find out: how to check if two array are equal or if the one array matches to the required array
-
-function winGame() {
-  if (img.src === image[0] && randImg.src === image[2]) {
-    document.getElementById('text').innerHTML = "Win";
-    updateScoreBoard();
-  }
-  else if (img.src === image[2] && randImg.src === image[1]) {
-    document.getElementById('text').innerHTML = "Win";
-    updateScoreBoard();
-  }
-  else if (img.src === image[1] && randImg.src === image[0]) {
-    document.getElementById('text').innerHTML = "Win";
-    updateScoreBoard();
-  }
-  else if (img.src === image[0] && randImg.src === image[0]) {
-    document.getElementById('text').innerHTML = "Draw";
-    updateScoreBoard();
-  }
-  else if (img.src === image[1] && randImg.src === image[1]) {
-    document.getElementById('text').innerHTML = "Draw";
-    updateScoreBoard();
-  }
-  else if (img.src === image[2] && randImg.src === image[2]) {
-    document.getElementById('text').innerHTML = "Draw";
-    updateScoreBoard();
-  }
-  else {
-    document.getElementById('text').innerHTML = "Sadly, you have lost!";
-    updateScoreBoard();
-  }
-}
-
-function createTRow() {
-  let tRow = document.createElement('tr');
-  return tRow;
-}
-
-function appendRowToBody() {
-  let rowOfBody = createTRow();
-  let rowToBody = document.getElementById('tBodyOfScoreT').appendChild(rowOfBody);
-  return rowToBody;
-}
-
-function createTData() {
-  let tData = document.createElement('td');
-  return tData;
-}
-
-function appendDataToTRow() {
-  let rowToBody = appendRowToBody();
-  let win = createTData();
-  let lose = createTData();
-  let draw = createTData();
-  const data = {
-    win: rowToBody.appendChild(win),
-    lose: rowToBody.appendChild(lose),
-    draw: rowToBody.appendChild(draw)
-  };
-  // rowToBody.appendChild(win);
-  // rowToBody.appendChild(lose);
-  // rowToBody.appendChild(draw); 
-  return data;
-}
-// if (img.src === image[0] && randImg.src === image[2] || img.src === image[2] && randImg.src === image[1] ||
-//   img.src === image[1] && randImg.src === image[0]) {
-//   win.textContent = 1;
-//   lose.textContent = 0;
-//   draw.textContent = 0;    
-// }
-// else if (img.src === image[0] && randImg.src === image[0] || img.src === image[1] && randImg.src === image[1] ||
-//   img.src === image[2] && randImg.src === image[2]) {
-//   console.log("Match has draw");
-//   win.textContent = 0;
-//   lose.textContent = 0;
-//   draw.textContent = 1;
-// }
-// else {
-//   console.log("Lost Lost Lost!!!");
-//   win.textContent = 0;
-//   lose.textContent = 1;
-//   draw.textContent = 0;
-// }
-// }
 
 function updateScoreBoard() {
   let dataToRow = appendDataToTRow();
@@ -149,7 +66,158 @@ function updateScoreBoard() {
   }
 }
 
+function addFooterRow() {
+  let row = createTRow();
+  let footerRow = document.getElementById('footer').appendChild(row);
+  return footerRow;
+}
 
+function addFooterCell() {
+  let tFooterRow = addFooterRow();
+  let footerWin = createTData();
+  let footerLose = createTData();
+  let footerDraw = createTData();
+  let addDataCellToFooter = {
+    winForFooter: tFooterRow.appendChild(footerWin),
+    loseForFooter: tFooterRow.appendChild(footerLose),
+    drawForFooter: tFooterRow.appendChild(footerDraw)
+  };
+ return addDataCellToFooter;
+}
+let table = document.getElementById('tBodyOfScoreT');
+
+function totalScore(){
+let footerCell = addFooterCell();
+for(i=1;i<table.rows.length;i++){
+  winSum = footerCell.winForFooter.textContent;
+  winSum += table.rows[i].cells[0];
+  console.log(winSum);
+}
+}
+
+function createTRow() {
+  let tRow = document.createElement('tr');
+  return tRow;
+}
+
+function appendRowToBody() {
+  let rowOfBody = createTRow();
+  let rowToBody = document.getElementById('tBodyOfScoreT').appendChild(rowOfBody);
+  return rowToBody;
+}
+
+function createTData() {
+  let tData = document.createElement('td');
+  return tData;
+}
+
+function appendDataToTRow() {
+  let rowToBody = appendRowToBody();
+  let winBody = createTData();
+  let loseBody = createTData();
+  let drawBody = createTData();
+  const data = {
+    win: rowToBody.appendChild(winBody),
+    lose: rowToBody.appendChild(loseBody),
+    draw: rowToBody.appendChild(drawBody)
+  };
+  return data;
+}
+
+
+
+
+// if (img.src === image[0] && randImg.src === image[2] || img.src === image[2] && randImg.src === image[1] ||
+//   img.src === image[1] && randImg.src === image[0]) {
+//   win.textContent = 1;
+//   lose.textContent = 0;
+//   draw.textContent = 0;    
+// }
+// else if (img.src === image[0] && randImg.src === image[0] || img.src === image[1] && randImg.src === image[1] ||
+//   img.src === image[2] && randImg.src === image[2]) {
+//   console.log("Match has draw");
+//   win.textContent = 0;
+//   lose.textContent = 0;
+//   draw.textContent = 1;
+// }
+// else {
+//   console.log("Lost Lost Lost!!!");
+//   win.textContent = 0;
+//   lose.textContent = 1;
+//   draw.textContent = 0;
+// }
+// }
+
+
+
+
+
+// function dataCell(){
+//  let tableDataCell = {
+//  win: createTData(),
+//  lose: createTData(),
+//  draw:  createTData()
+//  };
+//  return tableDataCell;
+// // }
+// let win = createTData();
+// let lose = createTData();
+// let draw = createTData();
+
+// let rowToBody = appendRowToBody();
+
+// const data = {
+//   win: rowToBody.appendChild(win),
+//   lose: rowToBody.appendChild(lose),
+//   draw: rowToBody.appendChild(draw)
+// };
+
+
+// function winGame() {
+//   if (img.src === image[0] && randImg.src === image[2]) {
+//     document.getElementById('text').innerHTML = "Win";
+//     updateScoreBoard();
+//   }
+//   else if (img.src === image[2] && randImg.src === image[1]) {
+//     document.getElementById('text').innerHTML = "Win";
+//     updateScoreBoard();
+//   }
+//   else if (img.src === image[1] && randImg.src === image[0]) {
+//     document.getElementById('text').innerHTML = "Win";
+//     updateScoreBoard();
+//   }
+//   else if (img.src === image[0] && randImg.src === image[0]) {
+//     document.getElementById('text').innerHTML = "Draw";
+//     updateScoreBoard();
+//   }
+//   else if (img.src === image[1] && randImg.src === image[1]) {
+//     document.getElementById('text').innerHTML = "Draw";
+//     updateScoreBoard();
+//   }
+//   else if (img.src === image[2] && randImg.src === image[2]) {
+//     document.getElementById('text').innerHTML = "Draw";
+//     updateScoreBoard();
+//   }
+//   else {
+//     document.getElementById('text').innerHTML = "Sadly, you have lost!";
+//     updateScoreBoard();
+//   }
+// }
+
+//pseudocode for check if user has won, draw or lost
+
+//win rule: image[0]==image[2]; image[2]==image[1]; image[1]==imge[0]
+//draw rule: if both of the images are equal
+//lost: if none of the condition checks out
+
+//find out: how to check if two array are equal or if the one array matches to the required array
+
+
+// function totalScore(){
+//  for(i=0;i<rowToBody.length;i++){
+//    win = ;
+//  }
+// }
 // function displayScore() {
 //   let dataToRow = appendDataToTRow();
 //   if (img.src === image[0] && randImg.src === image[2] || img.src === image[2] && randImg.src === image[1] ||
