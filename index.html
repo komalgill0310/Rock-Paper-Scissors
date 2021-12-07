@@ -9,40 +9,27 @@
 
 <body>
   <h1>Rock Paper Scissors</h1>
-  <h3>Try your luck!</h3>
+  <h3>Play For Fun!</h3>
+
   <div class="images">
     <img id="rock"
-      src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbCbt-tpSLG0mW8ftMQqX1TLPh9zUh7-MoQ&usqp=CAU
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiR80vQu8RQodJabjS_DEuDSKjEGj8FOFamQ&usqp=CAU"
       alt="Rock">
     <img id="paper"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6F0pt5tNfkfpz8DYZ06UH4eUJV6GeOfg8kg&usqp=CAU"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs76TjTo9IQinGCgOy8OG38h1LCaXoTTzcoQ&usqp=CAU"
       alt="Paper">
     <img id="scissor"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhxb4fESwYvjnFNbcai9MT6jBrE68GensGg&usqp=CAU"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZgV9cF8NH7JJpld-Ulx5b_NggiMHtTK9lr5vBuXL1cHPlfnLZPY4DBIVJdY-8S4SbBjg&usqp=CAU"
       alt="Scissor">
   </div>
-  <strong>
-    <p id="text"></p>
-  </strong>
-  <table id="scoreTable">
-    <caption>ScoreBoard</caption>
-    <thead>
-      <tr>
-        <th>Win</th>
-        <th>Lose</th>
-        <th>Draw</th>
-      </tr>
-    </thead>
-    <tbody id="tBodyOfScoreT"> </tbody>
-    <tfoot id="footer"></tfoot>
-  </table>
   <br><br>
-  <div>
-    <p>User Score = <span id="userScore"></span></p> 
-    <p>Comupter Score = <span id="compScore"></span></p>
-    <p>Tie = <span id="tie"></span></p>
+
+  <div id="score">
+    <p id="win"><span id="userScore"></span></p>
+    <p id="loss"> <span id="compScore"></span></p>
+    <p id="tie"><span id="draw"></span></p>
   </div>
-  <button id="endGame">End Game</button>
+
   <link rel="stylesheet" href="stylesheet.css">
   <script src="script.js"></script>
 </body>

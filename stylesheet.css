@@ -1,9 +1,23 @@
-#scoreTable{
-  border: 1px solid black;
-  border-collapse: collapse;
+h1{
+  font-weight: bolder;
+  font-size: 60px;
+  color: brown;
 }
 
-th, td{
-  border: 1px solid;
-  padding: 7px 5px;
+h3{
+  font-size: 40px;
+  color: orangered
+}
+
+#score{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#win{
+  color: green;
+}
+
+#loss{
+  color: red;
 }
