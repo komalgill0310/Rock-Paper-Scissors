@@ -30,19 +30,39 @@ document.getElementById('scissor').addEventListener('click', (e) => {
   updateScoreBoard();
 });
 
-// document.getElementById('endGame').addEventListener('click', (e) => {
-//   e.preventDefault();
-//   let footRow = createTRow();
-//   footRow.textContent = "Total";
-//   console.log("End Game");
-//   addFooterCell();
-//   totalScore();
-// });
-
 function getRandomImage() {
   let randomImageIndex = Math.floor(Math.random() * image.length);
   randImg.src = image[randomImageIndex];
   document.body.appendChild(randImg);
+}
+let userScore = 0;
+let computerScore = 0;
+let tie = 0;
+// document.getElementById('endGame').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   // let userScore = 0;
+//   // let computerScore = 0;
+//   if (img.src === image[0] && randImg.src === image[2] || img.src === image[2] && randImg.src === image[1] || img.src === image[1] && randImg.src === image[0]) {
+//     userScore++;
+//     console.log(userScore);
+//     document.getElementById('Score').innerText = userScore;
+//   }
+// });
+
+function displayUserScore(){
+  if (img.src === image[0] && randImg.src === image[2] || img.src === image[2] && randImg.src === image[1] || img.src === image[1] && randImg.src === image[0]){
+    let countUserScore = document.getElementById('userScore');
+    countUserScore = userScore++;
+    document.getElementById('userScore').textContent = userScore;
+  }
+}
+
+function displayComputerScore(){
+if(img.src === image[2] && randImg.src === image[0] || img.src === image[1] && randImg.src === image[2] || img.src === image[0] && randImg.src === image[1]){
+  let countCompScore = document.getElementById('compScore');
+  countCompScore = computerScore++;
+  document.getElementById('compScore').textContent = computerScore;
+}
 }
 
 function updateScoreBoard() {
@@ -52,47 +72,22 @@ function updateScoreBoard() {
     dataToRow.win.textContent = 1;
     dataToRow.lose.textContent = 0;
     dataToRow.draw.textContent = 0;
+    displayUserScore();
   }
-  else if (img.src === image[0] && randImg.src === image[0] || img.src === image[1] && randImg.src === image[1] ||
-    img.src === image[2] && randImg.src === image[2]) {
-    dataToRow.win.textContent = 0;
-    dataToRow.lose.textContent = 0;
-    dataToRow.draw.textContent = 1;
-  }
-  else {
+  else if (img.src === image[2] && randImg.src === image[0] || img.src === image[1] && randImg.src === image[2] || img.src === image[0] && randImg.src === image[1]) {
     dataToRow.win.textContent = 0;
     dataToRow.lose.textContent = 1;
     dataToRow.draw.textContent = 0;
+    displayComputerScore()
   }
-}
-
-function addFooterRow() {
-  let row = createTRow();
-  let footerRow = document.getElementById('footer').appendChild(row);
-  return footerRow;
-}
-
-function addFooterCell() {
-  let tFooterRow = addFooterRow();
-  let footerWin = createTData();
-  let footerLose = createTData();
-  let footerDraw = createTData();
-  let addDataCellToFooter = {
-    winForFooter: tFooterRow.appendChild(footerWin),
-    loseForFooter: tFooterRow.appendChild(footerLose),
-    drawForFooter: tFooterRow.appendChild(footerDraw)
-  };
- return addDataCellToFooter;
-}
-let table = document.getElementById('tBodyOfScoreT');
-
-function totalScore(){
-let footerCell = addFooterCell();
-for(i=1;i<table.rows.length;i++){
-  winSum = footerCell.winForFooter.textContent;
-  winSum += table.rows[i].cells[0];
-  console.log(winSum);
-}
+  else{
+  dataToRow.win.textContent = 0;
+    dataToRow.lose.textContent = 0;
+    dataToRow.draw.textContent = 1;
+    let tieScore = document.getElementById('tie');
+  tieScore = tie++;
+  document.getElementById('compScore').textContent = tie;
+  }
 }
 
 function createTRow() {
@@ -123,6 +118,41 @@ function appendDataToTRow() {
   };
   return data;
 }
+
+
+
+
+
+
+// function addFooterRow() {
+//   let row = createTRow();
+//   let footerRow = document.getElementById('footer').appendChild(row);
+//   return footerRow;
+// }
+
+// function addFooterCell() {
+//   let tFooterRow = addFooterRow();
+//   let footerWin = createTData();
+//   let footerLose = createTData();
+//   let footerDraw = createTData();
+//   let addDataCellToFooter = {
+//     winForFooter: tFooterRow.appendChild(footerWin),
+//     loseForFooter: tFooterRow.appendChild(footerLose),
+//     drawForFooter: tFooterRow.appendChild(footerDraw)
+//   };
+//  return addDataCellToFooter;
+// }
+// let table = document.getElementById('tBodyOfScoreT');
+
+// function totalScore(){
+// let footerCell = addFooterCell();
+// for(i=1;i<table.rows.length;i++){
+//   winSum = footerCell.winForFooter.textContent;
+//   winSum += table.rows[i].cells[0];
+//   console.log(winSum);
+// }
+// }
+
 
 
 
