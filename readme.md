@@ -10,4 +10,5 @@
 <font size=5>RPS is written in ***basic JavaScript***. This application has mostly used ***If-else statement, arrow function, array, randomFunction, DOM and addEventListener***. By using them in the project, I got a better ***understanding*** in those areas.
 
 # Author
-<font size=5>Komal - | Software Developer | [Rock Paper Scissor](https://komalgill0310.github.io/Rock-Paper-Scissors/) | [LinkedIn](www.linkedin.com/in/komalpreet-kaur-3b6924177)
+
+Komal | Software Developer | [Portfolio](https://kaurkomal.com/) | [LinkedIn](https://www.linkedin.com/in/hssa03/)
